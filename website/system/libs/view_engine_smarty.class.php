@@ -25,7 +25,7 @@ class view_engine_smarty extends view_engine_object {
         $this->engine->debugging = isset($config['debug']) ? $config['debug'] : false;
         $this->engine->caching = isset($config['caching']) ? $config['caching'] : false;
         $this->engine->cache_lifetime = $config['cache_lifetime'];
-        $this->engine->template_dir = config::getconfig('system', 'theme');
+        $this->engine->template_dir = config::getconfig('system', 'theme_dir');
         $this->engine->compile_dir = $config['compile_dir'];
         $this->engine->cache_dir = $config['cache_dir'];
     }
@@ -40,10 +40,13 @@ class view_engine_smarty extends view_engine_object {
     
     /**
      * Render the tplname as html and output the content to browser.
-     * @param string $tplname
      */
-    public function display($tplname) {
-        $this->engine->display(ROUTE_M.SP.$tplname.'.tpl.php');
+    public function display() {
+        $this->engine->display($this->tpl_file);
+    }
+    
+    public function template($tplname) {
+        $this->tpl_file = ROUTE_M.SP.$tplname.'.tpl.php';
     }
     
     /**

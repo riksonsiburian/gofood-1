@@ -27,17 +27,23 @@ class view_engine_php extends view_engine_object {
     
     /**
      * Render the tplname as html and output the content to browser.
-     * @param string $tplname
      */
-    public function display($tplname) {
-        $filepath = config::getconfig('system', 'theme').SP.ROUTE_M.SP.$tplname.'.tpl.php';
-        if (file_exists($filepath)) {
+    public function display() {
+        if (file_exists($this->tpl_file)) {
             extract($this->tpl_vars);
-            include $filepath;
+            include $this->tpl_file;
         }
         else {
-            trigger_error("$filepath doesn't exist.");
+            trigger_error("{$this->tpl_file} doesn't exist.");
         }
+    }
+    
+    /**
+     * (non-PHPdoc)
+     * @see view_engine_object::template()
+     */
+    public function template($tplname) {
+        $this->tpl_file = config::getconfig('system', 'theme_dir').SP.ROUTE_M.SP.$tplname.'.tpl.php';
     }
     
     /**

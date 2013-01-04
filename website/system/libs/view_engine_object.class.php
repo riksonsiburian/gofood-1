@@ -2,6 +2,12 @@
 abstract class view_engine_object {
 
     /**
+     * template file path.
+     * @var file path.
+     */
+    protected $tpl_file;
+    
+    /**
      * Initialize the engine.
      */
     public abstract function initialize();
@@ -14,9 +20,14 @@ abstract class view_engine_object {
     
     /**
      * Render the tplname as html and output the content to browser.
+     */
+    public abstract function display();
+    
+    /**
+     * Set the tpl file.
      * @param string $tplname
      */
-    public abstract function display($tplname);
+    public abstract function template($tplname);
     
     /**
      * Exposed the $vars to template.

@@ -5,6 +5,12 @@ class application {
      * @var router
      */
     public $router;
+    
+    /**
+     * 
+     * @var view_engine_object;
+     */
+    public $view_engine;
 
     /**
      *
@@ -14,12 +20,12 @@ class application {
 
     public function __construct() {
         $this->router = base::loadlib('router', true);
+        base::load_model('session_'.config::getconfig('system', 'session_storage'), true);
         $this->initialize();
     }
 
     public function initialize() {
         date_default_timezone_set(config::getconfig('system', 'timezone'));
-        session_start();
     }
 
     public function start() {
@@ -37,6 +43,8 @@ class application {
     }
 
     public function render() {
+        $this->view_engine = view_engine_factory::get_engine();
+        $this->view_engine->display();
         $loader = new css_js_loader();
     }
 }

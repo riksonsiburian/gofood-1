@@ -15,7 +15,7 @@ class css_js_loader {
     public function __construct() {
         $this->web = new DOMDocument();
         $this->web->load(BASEPATH.SP.'configs'.SP.'web.xml');
-        $this->filebase = THEMEPATH . '/' . config::getconfig('system', 'theme') . '/';
+        $this->filebase = config::getconfig('system', 'theme_dir') . '/';
         $this->uri = ROUTE_M.'/'.ROUTE_C.'/'.ROUTE_A;
     }
     

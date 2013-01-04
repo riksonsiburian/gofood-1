@@ -30,7 +30,7 @@ class router {
         base::loadmodule($controller, $module);
 
         if (!method_exists($controller, $action)) {
-            header('Location: '.SITE_URL.'/'.config::getconfig('system', 'page_404'));
+            header('Location: /'.config::getconfig('system', 'page_404'));
         }
         
         $service = new $controller();

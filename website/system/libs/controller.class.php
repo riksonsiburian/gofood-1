@@ -13,8 +13,8 @@ class controller {
         $this->view_engine = view_engine_factory::get_engine();
     }
     
-    public function display($tplname) {
-        $this->view_engine->display($tplname);
+    public function template($tplname) {
+        $this->view_engine->template($tplname);
     }
     
     public function assign($vars) {
