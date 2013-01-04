@@ -50,7 +50,12 @@ class view_engine_php extends view_engine_object {
      * Exposed the $vars to template.
      * @param array $vars
      */
-    public function assign($vars) {
-        $this->tpl_vars = array_merge($this->tpl_vars, $vars);
+    public function assign($vars, $value = null) {
+        if (isset($value)) {
+            $this->tpl_vars[$vars] = $value;
+        }
+        else {
+            $this->tpl_vars = array_merge($this->tpl_vars, $vars);
+        }
     }
 }

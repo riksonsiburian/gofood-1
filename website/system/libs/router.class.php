@@ -3,9 +3,10 @@ class router {
     private $module, $controller, $action;
 
     public function route() {
-        $path = isset($_GET['r']) ? $_GET['r'] : config::getconfig('system', 'page_default');
-        $path = str_replace('//', '/', trim($path, '/'));
 
+        $path = isset($_GET['r']) && $_GET['r'] != '/' ?  $_GET['r'] : config::getconfig('system', 'page_default');
+        $path = str_replace('//', '/', trim($path, '/'));
+        header('X-Rewrite-URL: '. $path);
         $parts = explode('/', $path);
 
         switch(count($parts)) {

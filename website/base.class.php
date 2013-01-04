@@ -82,7 +82,7 @@ class base {
     }
 
     public static function init() {
-        ob_start();
+        // ob_start();
         self::$finder = self::loadlib('finder', true);
         spl_autoload_register(array('base', 'loadlib'));
         spl_autoload_register(array('base', 'load_sys_class'));
@@ -91,8 +91,8 @@ class base {
         spl_autoload_register(array('base', 'autoload'));
         self::$app = self::loadlib('application', true);
         self::$app->start();
-        $contents = ob_get_contents();
-        ob_end_clean();
-        echo $contents;
+        //$contents = ob_get_contents();
+        //ob_end_clean();
+        //echo $contents;
     }
 }

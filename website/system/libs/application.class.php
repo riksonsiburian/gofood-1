@@ -43,8 +43,10 @@ class application {
     }
 
     public function render() {
-        $this->view_engine = view_engine_factory::get_engine();
-        $this->view_engine->display();
         $loader = new css_js_loader();
+        $this->view_engine = view_engine_factory::get_engine();
+        $this->view_engine->assign('js', $loader->js);
+        $this->view_engine->assign('css', $loader->css);
+        $this->view_engine->display();
     }
 }

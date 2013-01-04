@@ -33,5 +33,5 @@ abstract class view_engine_object {
      * Exposed the $vars to template.
      * @param array $vars
      */
-    public abstract function assign($vars);
+    public abstract function assign($vars, $v = null);
 }

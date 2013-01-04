@@ -6,7 +6,7 @@
             <page url="user/account/login">formvalidation.js, autocomplete.js</page>
         </js>
         <css>
-            <page url="/">style, frame</page>
+            <page url="/">style.css, frame.css</page>
         </css>
 	</site>
 </sites>
